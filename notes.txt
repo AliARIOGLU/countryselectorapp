@@ -1,0 +1,6 @@
+
+-> state logiciğini hallet sort edilmiyor
+
+-> gerekli css güzellemeleri
+
+-> error handling, loading eklentisi
