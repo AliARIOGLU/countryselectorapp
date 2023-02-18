@@ -73,10 +73,12 @@ export const CountryAttribute = styled.h2`
   display: flex;
   align-items: center;
   gap: 10px;
+  flex-wrap: wrap;
 `;
 export const CountryValue = styled.p`
   font-size: 12px;
   color: ${({ theme }) => theme.text};
+  overflow: hidden;
 `;
 export const TextRight = styled.div`
   display: flex;

@@ -23,7 +23,6 @@ const Dropdown = () => {
 
   useEffect(() => {
     if (filter !== "") {
-      console.log("sadas");
       dispatch(setRegion(filter.toLowerCase()));
     }
 
