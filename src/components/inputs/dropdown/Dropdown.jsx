@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import * as S from "./styled";
 
@@ -13,6 +13,9 @@ const Dropdown = () => {
 
   const dispatch = useDispatch();
 
+  const refHeader = useRef();
+  const refMenu = useRef();
+
   const handleMenu = () => {
     setOpenMenu(!openMenu);
   };
@@ -26,17 +29,25 @@ const Dropdown = () => {
       dispatch(setRegion(filter.toLowerCase()));
     }
 
+    function onClick(e) {
+      if (e.target !== refHeader.current && e.target !== refMenu.current) {
+        setOpenMenu(false);
+      }
+    }
+
+    document.body.addEventListener("click", onClick);
+
     return () => {
       dispatch(reset());
     };
   }, [dispatch, filter]);
 
   return (
-    <S.FilterMenu onClick={handleMenu}>
+    <S.FilterMenu onClick={handleMenu} ref={refHeader}>
       {filter ? filter : "Filter by Region"}
       <KeyboardArrowDownIcon />
       {openMenu ? (
-        <S.DropdownMenu>
+        <S.DropdownMenu ref={refMenu}>
           {regions.map((region, idx) => (
             <S.Button onClick={() => handleRegion(region)} key={idx}>
               {region}
