@@ -88,7 +88,7 @@ const CountryInfo = () => {
                             Capital:
                             <S.CountryValue>
                               {country?.capital
-                                ? country.capital
+                                ? country?.capital
                                 : "There is none"}
                             </S.CountryValue>
                           </S.CountryAttribute>
@@ -102,7 +102,7 @@ const CountryInfo = () => {
                             Currencies:
                             <S.CountryValue>
                               <S.CurrencyText>
-                                {Object.values(country.currencies)
+                                {Object.values(country?.currencies)
                                   .map((currency) => {
                                     return currency.name;
                                   })
@@ -113,7 +113,7 @@ const CountryInfo = () => {
                           <S.CountryAttribute>
                             Languages:
                             <S.CountryValue>
-                              {[...Object.values(country.languages)].join(",")}
+                              {[...Object.values(country?.languages)].join(",")}
                             </S.CountryValue>
                           </S.CountryAttribute>
                         </S.TextRight>

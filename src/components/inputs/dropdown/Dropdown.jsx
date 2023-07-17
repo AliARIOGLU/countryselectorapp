@@ -4,10 +4,12 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import * as S from "./styled";
 
 //redux
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { reset, setRegion } from "../../../features/countries/countriesSlice";
 
 const Dropdown = () => {
+  const { region } = useSelector((state) => state.country);
+
   const regions = ["Africa", "America", "Asia", "Europe", "Oceania"];
   const [filter, setFilter] = useState("");
   const [openMenu, setOpenMenu] = useState(false);
@@ -55,7 +57,9 @@ const Dropdown = () => {
 
   return (
     <S.FilterMenu onClick={handleMenu} ref={refHeader}>
-      {filter ? filter : "Filter by Region"}
+      {region
+        ? region.charAt(0).toUpperCase() + region.slice(1)
+        : "Filter by Region"}
       {openMenu ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
       {openMenu ? (
         <S.DropdownMenu ref={refMenu}>
