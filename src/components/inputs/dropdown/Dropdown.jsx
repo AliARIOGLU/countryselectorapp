@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import * as S from "./styled";
 
 //redux
@@ -35,17 +36,27 @@ const Dropdown = () => {
       }
     }
 
+    function onEscape(e) {
+      if (e.key === "Escape") {
+        setOpenMenu(false);
+      }
+    }
+
     document.body.addEventListener("click", onClick);
+
+    document.body.addEventListener("keydown", onEscape);
 
     return () => {
       dispatch(reset());
+      document.body.removeEventListener("click", onClick);
+      document.body.removeEventListener("keydown", onEscape);
     };
   }, [dispatch, filter]);
 
   return (
     <S.FilterMenu onClick={handleMenu} ref={refHeader}>
       {filter ? filter : "Filter by Region"}
-      <KeyboardArrowDownIcon />
+      {openMenu ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
       {openMenu ? (
         <S.DropdownMenu ref={refMenu}>
           {regions.map((region, idx) => (

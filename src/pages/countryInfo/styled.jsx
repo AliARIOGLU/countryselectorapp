@@ -1,6 +1,14 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
+export const Loading = styled.p`
+  padding: 50px 200px;
+  height: 100vh;
+  background-color: ${({ theme }) => theme.backgroundColor};
+  color: ${({ theme }) => theme.text};
+  font-weight: bold;
+`;
+
 export const Container = styled.div`
   background-color: ${({ theme }) => theme.backgroundColor};
   height: 100vh;
@@ -9,7 +17,7 @@ export const Container = styled.div`
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 40px; ;
+  gap: 40px;
 `;
 export const Header = styled.div``;
 
@@ -97,6 +105,12 @@ export const BorderCountry = styled(Link)`
   width: 50px;
   border-radius: 4px;
   text-decoration: none;
+  font-weight: 700;
+
+  &:hover {
+    background-color: white;
+    color: #3a2c2c;
+  }
 `;
 
 export const CurrencyText = styled.p`

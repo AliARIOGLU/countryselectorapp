@@ -18,7 +18,7 @@ const initialState = {
 
 export const countriesSlice = createSlice({
   name: "countries",
-  initialState: initialState,
+  initialState,
   reducers: {
     reset: (state) => {
       state.loading = false;

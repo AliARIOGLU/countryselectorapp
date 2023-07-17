@@ -31,7 +31,7 @@ const CountryCard = () => {
   }, [dispatch, error, success, region]);
 
   const data = countriesData.filter((country) =>
-    country.name.common.toLowerCase().includes(searchTerm)
+    country.name.common.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (

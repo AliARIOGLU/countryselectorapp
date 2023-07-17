@@ -37,7 +37,7 @@ const CountryInfo = () => {
   return (
     <>
       {loading ? (
-        "Loading..."
+        <S.Loading>Loading...</S.Loading>
       ) : (
         <S.Container>
           <S.Wrapper>
